@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baile dos 4M - Retrospectiva & Histórico</title>
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+   
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #141414;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.4;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #141414;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e50914;
+            border-radius: 4px;
+        }
+
+        /* Hero Section */
+        header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(20, 20, 20, 0.3) 0%, #141414 100%),
+                        url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            padding: 20px;
+        }
+
+        .hero-logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 5.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(229, 9, 20, 0.6);
+            animation: pulse 2.5s infinite;
+        }
+
+        .hero-logo span {
+            color: #e50914;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            font-weight: 400;
+            max-width: 650px;
+            margin-bottom: 35px;
+            color: #cccccc;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+            letter-spacing: -0.2px;
+        }
+
+        .cta-button {
+            font-family: 'Syne', sans-serif;
+            display: inline-block;
+            padding: 16px 45px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            background-color: #e50914;
+            text-decoration: none;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: #ff1e27;
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(229, 9, 20, 0.7);
+        }
+
+        /* Banner de Frase */
+        .retrospective-banner {
+            background: linear-gradient(90deg, #141414 0%, #290608 50%, #141414 100%);
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(229, 9, 20, 0.3);
+            border-bottom: 1px solid rgba(229, 9, 20, 0.3);
+        }
+
+        .retrospective-phrase {
+            font-size: 1.6rem;
+            font-style: italic;
+            font-weight: 500;
+            color: #ffffff;
+            max-width: 900px;
+            margin: 0 auto;
+            letter-spacing: -0.3px;
+        }
+
+        /* Nova Seção de Lançamentos */
+        .releases-section {
+            padding: 60px 20px 20px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .releases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .release-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #e50914;
+            color: #fff;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 2;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Botão de Compra/Ingresso */
+        .ticket-button {
+            font-family: 'Syne', sans-serif;
+            display: block;
+            text-align: center;
+            padding: 14px 20px;
+            margin: 15px 0 5px 0;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            background-color: #e50914;
+            text-decoration: none;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+            animation: pulse-button 2s infinite;
+        }
+
+        .ticket-button:hover {
+            background-color: #ff1e27;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.6);
+        }
+
+        /* Seção Histórico Geral */
+        .history-section {
+            padding: 60px 20px 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            border-left: 5px solid #e50914;
+            padding-left: 15px;
+        }
+
+        /* Grid da Timeline */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* Estrutura de Card Premium */
+        .event-card {
+            background-color: #1f1f1f;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .event-photo-container {
+            height: 380px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-header-bar {
+            height: 4px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .event-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .event-card:hover .event-photo {
+            transform: scale(1.04);
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(180deg, #1f1f1f 0%, #181818 100%);
+        }
+
+        .event-date {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            color: var(--event-color);
+        }
+
+        .event-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+            line-height: 1.25;
+        }
+
+        .event-details {
+            font-size: 0.9rem;
+            color: #aaaaaa;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+
+        .event-artists {
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-left: 2px solid var(--event-color);
+            padding-left: 10px;
+            color: #ffffff;
+            letter-spacing: 0.3px;
+            margin-top: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000000;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        .footer-social {
+            margin-bottom: 15px;
+        }
+
+        .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-link:hover {
+            color: #e50914;
+        }
+
+        .footer-credits {
+            font-size: 0.75rem;
+            color: #666663;
+            margin-top: 10px;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); text-shadow: 0 0 30px rgba(229, 9, 20, 0.4); }
+            50% { transform: scale(1.01); text-shadow: 0 0 40px rgba(229, 9, 20, 0.7); }
+            100% { transform: scale(1); text-shadow: 0 0 30px rgba(229, 9, 20, 0.4); }
+        }
+
+        @keyframes pulse-button {
+            0% { box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4); }
+            50% { box-shadow: 0 4px 25px rgba(229, 9, 20, 0.8); }
+            100% { box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-logo { font-size: 3.5rem; }
+            .hero-tagline { font-size: 1.1rem; }
+            .retrospective-phrase { font-size: 1.3rem; }
+            .section-title { font-size: 1.8rem; }
+            .event-photo-container { height: 340px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-logo">BAILE DOS <span>4M</span></div>
+        <p class="hero-tagline">A maior e mais tradicional dinastia de bailes de Passo Fundo. Relembre nossa trajetória histórica através das edições.</p>
+        <a href="https://www.instagram.com/bailedos4m" target="_blank" class="cta-button">Ver Novidades no Instagram</a>
+    </header>
+
+    <section class="retrospective-banner">
+        <div class="retrospective-phrase">
+            Uma vibe que não se explica, se vive.
+        </div>
+    </section>
+
+    <section class="releases-section">
+        <h2 class="section-title">Novos Lançamentos</h2>
+        <div class="releases-grid">
+           
+            <!-- Card 10ª Edição com Link de Venda Ativo -->
+            <div class="event-card" style="--event-color: #e50914;">
+                <span class="release-tag">Novo</span>
+                <div class="event-photo-container">
+                    <div class="card-header-bar" style="background-color: #e50914;"></div>
+                    <img src="imagens/baile 10.jpeg" alt="Baile dos 4M - Lançamento Especial" class="event-photo">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <p class="event-date" style="--event-color: #e50914">Ingressos Voando</p>
+                        <h3 class="event-title">Baile dos 4M - 10º edição!</h3>
+                        <p class="event-details">Prepare-se para o próximo capítulo da maior dinastia. Uma produção totalmente reformulada com o selo de qualidade 4M.</p>
+                        
+                        <!-- BOTÃO SYMPLA ADICIONADO AQUI -->
+                        <a href="https://www.sympla.com.br/evento/baile-dos-4m-10-edicao/3437134" target="_blank" class="ticket-button">Garantir Ingresso no Sympla</a>
+                    </div>
+                    <div class="event-artists" style="--event-color: #e50914">
+                        LINEUP SURPRESA / ATRAÇÕES NACIONAIS
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" style="--event-color: #fd7e14;">
+                <span class="release-tag">Novo</span>
+                <div class="event-photo-container">
+                    <div class="card-header-bar" style="background-color: #fd7e14;"></div>
+                    <img src="imagens/baile 10  (1).jpeg" alt="Baile dos 4M - Warm Up" class="event-photo">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <p class="event-date" style="--event-color: #fd7e14">Em Breve</p>
+                        <h3 class="event-title">Baile dos 4M - Exclusive Crew</h3>
+                        <p class="event-details">A vibe indescritível que você já conhece em uma atmosfera ainda mais intensa e seleta. Garanta sua presença antecipada.</p>
+                    </div>
+                    <div class="event-artists" style="--event-color: #fd7e14">
+                        CONVIDADOS ESPECIAIS / DJ SETS RESIDENTES
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="history-section">
+        <h2 class="section-title">Nossa Trajetória</h2>
+        <div class="timeline" id="timelineGrid">
+            </div>
+    </section>
+
+    <footer>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/bailedos4m" target="_blank" class="footer-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0 3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                @bailedos4m
+            </a>
+        </div>
+        <p class="footer-credits">&copy; 2026 Baile dos 4M. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const eventsData = [
+            {
+                photo: 'imagens/baile 2.jpeg',
+                title: 'O Melhor Baile de 2018 - Baile dos 4M #2',
+                date: '07 de Agosto de 2025',
+                description: 'Uma das primeiras edições da dinastia trazendo a essência histórica da Class Bar Club.',
+                lineup: 'Leon / Gu Henks / NOG (DJ Oficial)',
+                eventKey: 'Leon',
+                barColor: '#ffffff'
+            },
+            {
+                photo: 'imagens/baile 3.jpeg',
+                title: 'Baile dos 4M #3',
+                date: '11 de Setembro de 2025',
+                description: 'A consagrada Quinta Fire retornando com tudo para mais uma noite histórica.',
+                lineup: 'DJs FK / Panke',
+                eventKey: 'FK',
+                barColor: '#0d6efd'
+            },
+            {
+                photo: 'imagens/baile 4.jpeg',
+                title: 'Baile dos 4M',
+                date: '16 de Outubro de 2025',
+                description: 'Uma edição marcante trazendo a pura essência e a energia das noites de gala da dinastia.',
+                lineup: 'Éligê / Leo ZR',
+                eventKey: 'Elige',
+                barColor: '#0052cc'
+            },
+            {
+                photo: 'imagens/baile 5.jpeg',
+                title: 'Baile dos 4M Neo Beats',
+                date: '07 de Novembro de 2025',
+                description: 'Uma fusão épica de ritmos trazendo um dos maiores produtores da cena nacional diretamente para a pista.',
+                lineup: 'Neo Beats / GN / Luang',
+                eventKey: 'Neo',
+                barColor: '#e50914'
+            },
+            {
+                photo: 'imagens/baile 6.jpeg',
+                title: 'Baile dos 4M & Baile do Gordão',
+                date: '06 de Dezembro de 2025',
+                description: 'A união explosiva de dois giants em uma única noite: 1 Noite, 2 Bailes.',
+                lineup: 'Gilvinho / Otávio Souza',
+                eventKey: 'Gordão',
+                barColor: '#28a745'
+            },
+            {
+                photo: 'imagens/baile 7.jpeg',
+                title: 'Baile dos 4M & Baile do Malware',
+                date: '27 de Dezembro de 2025',
+                description: 'O lendário Baile dos Malware fechando o ano com chave de ouro na Class Bar Club com o formato 1 Noite, 2 Bailes.',
+                lineup: 'Linsk / Malware / Zanonn',
+                eventKey: 'Malware',
+                barColor: '#146c43'
+            },
+            {
+                photo: 'imagens/baile 8.jpeg',
+                title: 'Baile dos 4M & Baile do Gordão',
+                date: '24 de Janeiro de 2026',
+                description: 'Começando o ano novo com a energia lá no alto no tradicional e apaixonante formato double-party.',
+                lineup: 'Gilvinho / FK',
+                eventKey: 'Coração',
+                barColor: '#fd7e14'
+            },
+            {
+                photo: 'imagens/baile 9.jpeg',
+                title: 'HYPE 4M - Especial Volta às Aulas',
+                date: '21 de Fevereiro de 2026',
+                description: 'O grande retorno dos 4M em uma parceria massiva com as Atléticas: Abelhão, Popeye, Zeus, Tazmaníacos, Bodão e Panda. Localizado na HYPE.',
+                lineup: 'FK / Éligê / Grando',
+                eventKey: 'Hype',
+                barColor: '#b02a37'
+            }
+        ];
+
+        const timelineGrid = document.getElementById('timelineGrid');
+
+        function createEventCard(event) {
+            return `
+                <div class="event-card" data-event="${event.eventKey}">
+                    <div class="event-photo-container" style="--event-color: ${event.barColor};">
+                        <div class="card-header-bar" style="background-color: ${event.barColor};"></div>
+                        <img src="${event.photo}" alt="${event.title}" class="event-photo">
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <p class="event-date" style="--event-color: ${event.barColor}">${event.date}</p>
+                            <h3 class="event-title">${event.title}</h3>
+                            <p class="event-details">${event.description}</p>
+                        </div>
+                        <div class="event-artists" style="--event-color: ${event.barColor}">
+                            LINEUP: ${event.lineup}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function populateTimeline() {
+            if (!timelineGrid) return;
+            timelineGrid.innerHTML = "";
+            eventsData.forEach(event => {
+                const cardHTML = createEventCard(event);
+                timelineGrid.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            populateTimeline();
+        });
+    </script>
+</body>
+</html>
